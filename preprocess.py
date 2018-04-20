@@ -28,13 +28,13 @@ groupby_hid = df.groupby('horse_id')
 
 # Append recent_6_runs
 print('Appending column: recent_6_runs')
-recent_6 = groupby_hid['horse_number'].apply(lambda v: "/".join([str(int(n)) for n in v[-6:]]))
+recent_6 = groupby_hid['finishing_position'].apply(lambda v: "/".join([str(int(n)) for n in v[-6:]]))
 recent_6.name = 'recent_6_runs'
 df = df.join(recent_6, on='horse_id', rsuffix='')
 
 # Append recent_ave_rank
 print('Appending column: recent_ave_rank')
-recent_ave = groupby_hid['horse_number'].apply(lambda v: np.mean(v[-6:]))
+recent_ave = groupby_hid['finishing_position'].apply(lambda v: np.mean(v[-6:]))
 recent_ave.name = 'recent_ave_rank'
 df = df.join(recent_ave, on='horse_id', rsuffix='')
 
@@ -85,7 +85,7 @@ print('Split dataframe into # of train / test: {} / {}'.format(len(X_train), len
 
 # Append jockey_ave_rank
 print('Appending column: jockey_ave_rank')
-jck_ave = X_train.groupby('jockey')['horse_number'].mean()
+jck_ave = X_train.groupby('jockey')['finishing_position'].mean()
 jck_ave.name = 'jockey_ave_rank'
 X_train = X_train.join(jck_ave, on='jockey', rsuffix='')
 X_test = X_test.join(jck_ave, on='jockey', rsuffix='')
@@ -93,7 +93,7 @@ X_test.jockey_ave_rank = X_test.jockey_ave_rank.replace(float('nan'), 7)
 
 # Append trainer_ave_rank
 print('Appending column: trainer_ave_rank')
-trn_ave = X_train.groupby('trainer')['horse_number'].mean()
+trn_ave = X_train.groupby('trainer')['finishing_position'].mean()
 trn_ave.name = 'trainer_ave_rank'
 X_train = X_train.join(trn_ave, on='trainer', rsuffix='')
 X_test = X_test.join(trn_ave, on='trainer', rsuffix='')
