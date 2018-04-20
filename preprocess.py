@@ -83,6 +83,22 @@ X_train = df[df.race_id <= split_pt]
 X_test = df[df.race_id > split_pt]
 print('Split dataframe into # of train / test: {} / {}'.format(len(X_train), len(X_test)))
 
+# Append jockey_ave_rank
+print('Appending column: jockey_ave_rank')
+jck_ave = X_train.groupby('jockey')['horse_number'].mean()
+jck_ave.name = 'jockey_ave_rank'
+X_train = X_train.join(jck_ave, on='jockey', rsuffix='')
+X_test = X_test.join(jck_ave, on='jockey', rsuffix='')
+X_test.jockey_ave_rank = X_test.jockey_ave_rank.replace(float('nan'), 7)
+
+# Append trainer_ave_rank
+print('Appending column: trainer_ave_rank')
+trn_ave = X_train.groupby('trainer')['horse_number'].mean()
+trn_ave.name = 'trainer_ave_rank'
+X_train = X_train.join(trn_ave, on='trainer', rsuffix='')
+X_test = X_test.join(trn_ave, on='trainer', rsuffix='')
+X_test.trainer_ave_rank = X_test.trainer_ave_rank.replace(float('nan'), 7)
+
 # Save to csv
 X_train.to_csv('training.csv')
 X_test.to_csv('testing.csv')
