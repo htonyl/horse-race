@@ -23,6 +23,9 @@ print_stat(df)
 cond = np.where([not (type(s) == type('') and s.isdigit()) for s in df['finishing_position']])
 df = df.drop(cond[0], axis=0)
 
+# Cast finishing_position to int
+df.finishing_position = df.finishing_position.apply(pd.to_numeric)
+
 ## 2.2.2 Recent performance of each horse
 groupby_hid = df.groupby('horse_id')
 
