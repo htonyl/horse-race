@@ -1,0 +1,241 @@
+start training
+finish training
+lr 0.05;ne 100; md 1('gbrt_model', 782.0433460486233, 0.9958333333333333, 1.0, 1.0083333333333333)
+start training
+finish training
+lr 0.05;ne 100; md 2('gbrt_model', 329.3471128903514, 0.79375, 0.9479166666666666, 1.4270833333333333)
+start training
+finish training
+lr 0.05;ne 100; md 3('gbrt_model', 269.2467930260501, 0.31875, 0.5875, 3.908333333333333)
+start training
+finish training
+lr 0.05;ne 100; md 4('gbrt_model', 235.38876629338102, 0.2875, 0.48125, 4.739583333333333)
+start training
+finish training
+lr 0.05;ne 200; md 1('gbrt_model', 303.60733305149785, 0.9541666666666667, 1.0, 1.0541666666666667)
+start training
+finish training
+lr 0.05;ne 200; md 2('gbrt_model', 133.1363818404549, 0.28541666666666665, 0.5958333333333333, 3.7333333333333334)
+start training
+finish training
+lr 0.05;ne 200; md 3('gbrt_model', 131.7880466716544, 0.2791666666666667, 0.5541666666666667, 4.0)
+start training
+finish training
+lr 0.05;ne 200; md 4('gbrt_model', 132.00424113438044, 0.275, 0.5395833333333333, 4.154166666666667)
+start training
+finish training
+lr 0.05;ne 250; md 1('gbrt_model', 142.84896650863567, 0.9541666666666667, 1.0, 1.0541666666666667)
+start training
+finish training
+lr 0.05;ne 250; md 2('gbrt_model', 131.87336008529087, 0.3, 0.5895833333333333, 3.7416666666666667)
+start training
+finish training
+lr 0.05;ne 250; md 3('gbrt_model', 131.27378344362165, 0.2875, 0.5604166666666667, 3.975)
+start training
+finish training
+lr 0.05;ne 250; md 4('gbrt_model', 131.45345631290988, 0.26875, 0.5416666666666666, 4.125)
+start training
+finish training
+lr 0.05;ne 300; md 1('gbrt_model', 134.38924190841036, 0.48333333333333334, 0.79375, 2.495833333333333)
+start training
+finish training
+lr 0.05;ne 300; md 2('gbrt_model', 131.52878206516607, 0.3, 0.5854166666666667, 3.8895833333333334)
+start training
+finish training
+lr 0.05;ne 300; md 3('gbrt_model', 131.12430721714557, 0.28125, 0.5604166666666667, 3.96875)
+start training
+finish training
+lr 0.05;ne 300; md 4('gbrt_model', 131.40768796555824, 0.2708333333333333, 0.5416666666666666, 4.116666666666666)
+start training
+finish training
+lr 0.05;ne 400; md 1('gbrt_model', 132.0567890849038, 0.2875, 0.59375, 3.7291666666666665)
+start training
+finish training
+lr 0.05;ne 400; md 2('gbrt_model', 131.4599772594621, 0.29791666666666666, 0.58125, 3.902083333333333)
+start training
+finish training
+lr 0.05;ne 400; md 3('gbrt_model', 131.16718189940204, 0.2791666666666667, 0.5645833333333333, 3.9625)
+start training
+finish training
+lr 0.05;ne 400; md 4('gbrt_model', 131.48619244492488, 0.275, 0.5416666666666666, 4.15)
+start training
+finish training
+lr 0.1;ne 100; md 1('gbrt_model', 302.36109258939, 0.9625, 1.0, 1.0458333333333334)
+start training
+finish training
+lr 0.1;ne 100; md 2('gbrt_model', 133.07702146537775, 0.28958333333333336, 0.6041666666666666, 3.654166666666667)
+start training
+finish training
+lr 0.1;ne 100; md 3('gbrt_model', 131.90424507281014, 0.28125, 0.5604166666666667, 4.05625)
+start training
+finish training
+lr 0.1;ne 100; md 4('gbrt_model', 132.3715800258397, 0.25416666666666665, 0.5166666666666667, 4.23125)
+start training
+finish training
+lr 0.1;ne 200; md 1('gbrt_model', 132.10109167215876, 0.29375, 0.60625, 3.6416666666666666)
+start training
+finish training
+lr 0.1;ne 200; md 2('gbrt_model', 131.6623688967258, 0.3125, 0.5854166666666667, 3.8833333333333333)
+start training
+finish training
+lr 0.1;ne 200; md 3('gbrt_model', 131.39848998012374, 0.26666666666666666, 0.5458333333333333, 4.160416666666666)
+start training
+finish training
+lr 0.1;ne 200; md 4('gbrt_model', 131.55553168165048, 0.2520833333333333, 0.5229166666666667, 4.233333333333333)
+start training
+finish training
+lr 0.1;ne 250; md 1('gbrt_model', 131.8384142708754, 0.28541666666666665, 0.5791666666666667, 3.8833333333333333)
+start training
+finish training
+lr 0.1;ne 250; md 2('gbrt_model', 131.6557096593964, 0.3104166666666667, 0.5895833333333333, 3.8833333333333333)
+start training
+finish training
+lr 0.1;ne 250; md 3('gbrt_model', 131.4845282315955, 0.2708333333333333, 0.5520833333333334, 4.095833333333333)
+start training
+finish training
+lr 0.1;ne 250; md 4('gbrt_model', 131.5806643053969, 0.26458333333333334, 0.5354166666666667, 4.13125)
+start training
+finish training
+lr 0.1;ne 300; md 1('gbrt_model', 131.60909192766584, 0.29375, 0.5833333333333334, 3.814583333333333)
+start training
+finish training
+lr 0.1;ne 300; md 2('gbrt_model', 131.50917249700677, 0.30625, 0.5875, 3.9125)
+start training
+finish training
+lr 0.1;ne 300; md 3('gbrt_model', 131.58575095725786, 0.275, 0.55625, 4.08125)
+start training
+finish training
+lr 0.1;ne 300; md 4('gbrt_model', 131.6412024224665, 0.25625, 0.5416666666666666, 4.125)
+start training
+finish training
+lr 0.1;ne 400; md 1('gbrt_model', 131.56268557428513, 0.29375, 0.58125, 3.8520833333333333)
+start training
+finish training
+lr 0.1;ne 400; md 2('gbrt_model', 131.5046115401495, 0.30416666666666664, 0.5875, 3.9208333333333334)
+start training
+finish training
+lr 0.1;ne 400; md 3('gbrt_model', 131.59881106009036, 0.27291666666666664, 0.55, 4.1)
+start training
+finish training
+lr 0.1;ne 400; md 4('gbrt_model', 131.64382822171055, 0.26666666666666666, 0.5479166666666667, 4.0625)
+start training
+finish training
+lr 0.15;ne 100; md 1('gbrt_model', 133.58062798570128, 0.48333333333333334, 0.79375, 2.4833333333333334)
+start training
+finish training
+lr 0.15;ne 100; md 2('gbrt_model', 131.81793080247027, 0.30416666666666664, 0.58125, 3.8333333333333335)
+start training
+finish training
+lr 0.15;ne 100; md 3('gbrt_model', 131.1078931729267, 0.2625, 0.5458333333333333, 4.14375)
+start training
+finish training
+lr 0.15;ne 100; md 4('gbrt_model', 131.7028498925364, 0.27291666666666664, 0.5395833333333333, 4.21875)
+start training
+finish training
+lr 0.15;ne 200; md 1('gbrt_model', 131.34725261771328, 0.3, 0.58125, 3.84375)
+start training
+finish training
+lr 0.15;ne 200; md 2('gbrt_model', 131.32308972122024, 0.3104166666666667, 0.5875, 3.7895833333333333)
+start training
+finish training
+lr 0.15;ne 200; md 3('gbrt_model', 131.1703926882011, 0.26666666666666666, 0.55, 4.102083333333334)
+start training
+finish training
+lr 0.15;ne 200; md 4('gbrt_model', 131.57031526172935, 0.26666666666666666, 0.5208333333333334, 4.2875)
+start training
+finish training
+lr 0.15;ne 250; md 1('gbrt_model', 131.44731734575117, 0.3, 0.5833333333333334, 3.84375)
+start training
+finish training
+lr 0.15;ne 250; md 2('gbrt_model', 131.36273214786885, 0.30833333333333335, 0.5895833333333333, 3.8020833333333335)
+start training
+finish training
+lr 0.15;ne 250; md 3('gbrt_model', 131.1827530686614, 0.26666666666666666, 0.55, 4.102083333333334)
+start training
+finish training
+lr 0.15;ne 250; md 4('gbrt_model', 131.94609456468982, 0.26458333333333334, 0.525, 4.254166666666666)
+start training
+finish training
+lr 0.15;ne 300; md 1('gbrt_model', 131.45219637976788, 0.3, 0.5833333333333334, 3.84375)
+start training
+finish training
+lr 0.15;ne 300; md 2('gbrt_model', 131.37221123936482, 0.30833333333333335, 0.5895833333333333, 3.8020833333333335)
+start training
+finish training
+lr 0.15;ne 300; md 3('gbrt_model', 131.15826301247034, 0.26666666666666666, 0.55, 4.102083333333334)
+start training
+finish training
+lr 0.15;ne 300; md 4('gbrt_model', 131.77584410917115, 0.25625, 0.5145833333333333, 4.35625)
+start training
+finish training
+lr 0.15;ne 400; md 1('gbrt_model', 131.4521978333689, 0.3, 0.5833333333333334, 3.84375)
+start training
+finish training
+lr 0.15;ne 400; md 2('gbrt_model', 131.34151023319416, 0.30833333333333335, 0.5895833333333333, 3.8020833333333335)
+start training
+finish training
+lr 0.15;ne 400; md 3('gbrt_model', 131.18581412939815, 0.26666666666666666, 0.55, 4.102083333333334)
+start training
+finish training
+lr 0.15;ne 400; md 4('gbrt_model', 131.7069185643347, 0.2604166666666667, 0.5333333333333333, 4.19375)
+start training
+finish training
+lr 0.2;ne 100; md 1('gbrt_model', 132.88986851331092, 0.2875, 0.6020833333333333, 3.7375)
+start training
+finish training
+lr 0.2;ne 100; md 2('gbrt_model', 131.52177317271847, 0.28958333333333336, 0.5770833333333333, 4.010416666666667)
+start training
+finish training
+lr 0.2;ne 100; md 3('gbrt_model', 131.06502924210864, 0.2833333333333333, 0.5666666666666667, 4.014583333333333)
+start training
+finish training
+lr 0.2;ne 100; md 4('gbrt_model', 131.71052387204455, 0.28125, 0.5645833333333333, 3.966666666666667)
+start training
+finish training
+lr 0.2;ne 200; md 1('gbrt_model', 131.47656583234334, 0.29791666666666666, 0.5875, 3.8020833333333335)
+start training
+finish training
+lr 0.2;ne 200; md 2('gbrt_model', 131.36057287651988, 0.2833333333333333, 0.5708333333333333, 4.05625)
+start training
+finish training
+lr 0.2;ne 200; md 3('gbrt_model', 131.07519743970647, 0.2833333333333333, 0.5625, 4.052083333333333)
+start training
+finish training
+lr 0.2;ne 200; md 4('gbrt_model', 131.86953704408907, 0.28125, 0.56875, 3.9520833333333334)
+start training
+finish training
+lr 0.2;ne 250; md 1('gbrt_model', 131.54707394196078, 0.3, 0.5895833333333333, 3.808333333333333)
+start training
+finish training
+lr 0.2;ne 250; md 2('gbrt_model', 131.36794433555195, 0.2833333333333333, 0.5708333333333333, 4.05625)
+start training
+finish training
+lr 0.2;ne 250; md 3('gbrt_model', 131.11535479223767, 0.2875, 0.5583333333333333, 4.060416666666667)
+start training
+finish training
+lr 0.2;ne 250; md 4('gbrt_model', 131.82836453948227, 0.28125, 0.56875, 3.9520833333333334)
+start training
+finish training
+lr 0.2;ne 300; md 1('gbrt_model', 131.5470828560265, 0.3, 0.5895833333333333, 3.808333333333333)
+start training
+finish training
+lr 0.2;ne 300; md 2('gbrt_model', 131.40421955635725, 0.2833333333333333, 0.5708333333333333, 4.05625)
+start training
+finish training
+lr 0.2;ne 300; md 3('gbrt_model', 131.201679098919, 0.2833333333333333, 0.5583333333333333, 4.070833333333334)
+start training
+finish training
+lr 0.2;ne 300; md 4('gbrt_model', 131.9267039367275, 0.26875, 0.55, 4.085416666666666)
+start training
+finish training
+lr 0.2;ne 400; md 1('gbrt_model', 131.54708285615413, 0.3, 0.5895833333333333, 3.808333333333333)
+start training
+finish training
+lr 0.2;ne 400; md 2('gbrt_model', 131.3893287098995, 0.2833333333333333, 0.5708333333333333, 4.05625)
+start training
+finish training
+lr 0.2;ne 400; md 3('gbrt_model', 131.03707242024456, 0.2916666666666667, 0.5645833333333333, 4.03125)
+start training
+finish training
+lr 0.2;ne 400; md 4('gbrt_model', 131.8830231258371, 0.26875, 0.55625, 4.070833333333334)
+
