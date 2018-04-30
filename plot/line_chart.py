@@ -26,5 +26,5 @@ while True:
     plt.ylabel("Rank")
     plt.title("Recent 6 races of horse "+horseid)
     plt.show()
-    print(rank)
-    print(gameid)
+    #print(rank)
+    #print(gameid)

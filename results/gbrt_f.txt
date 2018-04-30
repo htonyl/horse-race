@@ -1,0 +1,220 @@
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 200; md 2('gbrt_model', 2.157558029526693, 0.30833333333333335, 0.5895833333333333, 3.7625)
+start training
+finish training
+lr 0.1;ne 225; md 2('gbrt_model', 2.1564595823590254, 0.30625, 0.5875, 3.7729166666666667)
+start training
+finish training
+lr 0.1;ne 250; md 2('gbrt_model', 2.154766193938031, 0.3020833333333333, 0.5875, 3.7895833333333333)
+start training
+finish training
+lr 0.1;ne 275; md 2('gbrt_model', 2.1540964053103937, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+start training
+finish training
+lr 0.1;ne 300; md 2('gbrt_model', 2.1538192235055322, 0.3020833333333333, 0.5895833333333333, 3.7916666666666665)
+start training
+finish training
+lr 0.15;ne 200; md 2('gbrt_model', 2.157481039255785, 0.29791666666666666, 0.5791666666666667, 3.841666666666667)
+start training
+finish training
+lr 0.15;ne 225; md 2('gbrt_model', 2.1576719290508346, 0.29791666666666666, 0.58125, 3.83125)
+start training
+finish training
+lr 0.15;ne 250; md 2('gbrt_model', 2.158409928497076, 0.29791666666666666, 0.58125, 3.83125)
+start training
+finish training
+lr 0.15;ne 275; md 2('gbrt_model', 2.157830371759218, 0.29791666666666666, 0.5791666666666667, 3.841666666666667)
+start training
+finish training
+lr 0.15;ne 300; md 2('gbrt_model', 2.157429826668938, 0.29791666666666666, 0.58125, 3.83125)
+start training
+finish training
+lr 0.2;ne 200; md 2('gbrt_model', 2.157511990472737, 0.29375, 0.58125, 3.875)
+start training
+finish training
+lr 0.2;ne 225; md 2('gbrt_model', 2.1578676390339253, 0.29375, 0.58125, 3.875)
+start training
+finish training
+lr 0.2;ne 250; md 2('gbrt_model', 2.1562572686274866, 0.29375, 0.58125, 3.875)
+start training
+finish training
+lr 0.2;ne 275; md 2('gbrt_model', 2.1569527471337406, 0.29375, 0.58125, 3.875)
+start training
+finish training
+lr 0.2;ne 300; md 2('gbrt_model', 2.156681141066042, 0.29375, 0.58125, 3.875)
+start training
+finish training
+lr 0.25;ne 200; md 2('gbrt_model', 2.1689402058669645, 0.30416666666666664, 0.5979166666666667, 3.7916666666666665)
+start training
+finish training
+lr 0.25;ne 225; md 2('gbrt_model', 2.169555767968803, 0.30416666666666664, 0.5979166666666667, 3.7916666666666665)
+start training
+finish training
+lr 0.25;ne 250; md 2('gbrt_model', 2.169262736031224, 0.30416666666666664, 0.5979166666666667, 3.7916666666666665)
+start training
+finish training
+lr 0.25;ne 275; md 2('gbrt_model', 2.1690097860368738, 0.30416666666666664, 0.5979166666666667, 3.7916666666666665)
+start training
+finish training
+lr 0.25;ne 300; md 2('gbrt_model', 2.1697449912586517, 0.30416666666666664, 0.5979166666666667, 3.7916666666666665)
+('gbrt_model', 2.1544025928453796, 0.3020833333333333, 0.5895833333333333, 3.7916666666666665)
+('norm_gbrt_model', 2.1531543597627176, 0.3020833333333333, 0.5875, 3.7958333333333334)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 270; md 2('gbrt_model', 2.1534144303823806, 0.30416666666666664, 0.5916666666666667, 3.775)
+start training
+finish training
+lr 0.1;ne 280; md 2('gbrt_model', 2.153243670851315, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+('gbrt_model', 2.153639449827828, 0.30416666666666664, 0.5916666666666667, 3.775)
+('norm_gbrt_model', 2.1540359234761914, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 260; md 2('gbrt_model', 2.154192924341313, 0.3020833333333333, 0.5875, 3.7895833333333333)
+start training
+finish training
+lr 0.1;ne 265; md 2('gbrt_model', 2.154405779376117, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+start training
+finish training
+lr 0.1;ne 270; md 2('gbrt_model', 2.154546752673184, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+start training
+finish training
+lr 0.1;ne 274; md 2('gbrt_model', 2.153887701993742, 0.3020833333333333, 0.5895833333333333, 3.783333333333333)
+('gbrt_model', 2.1533799472857678, 0.30416666666666664, 0.5916666666666667, 3.775)
+('norm_gbrt_model', 2.1537426227535748, 0.30416666666666664, 0.5916666666666667, 3.775)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 260; md 2('gbrt_model', 2.153375642830554, 0.30625, 0.5895833333333333, 3.7729166666666667)
+start training
+finish training
+lr 0.1;ne 263; md 2('gbrt_model', 2.1534925886483385, 0.30416666666666664, 0.5895833333333333, 3.78125)
+start training
+finish training
+lr 0.1;ne 264; md 2('gbrt_model', 2.1534368811423676, 0.30416666666666664, 0.5895833333333333, 3.78125)
+start training
+finish training
+lr 0.1;ne 265; md 2('gbrt_model', 2.153386826225784, 0.30416666666666664, 0.5895833333333333, 3.78125)
+start training
+finish training
+lr 0.1;ne 268; md 2('gbrt_model', 2.153266161800455, 0.30416666666666664, 0.5916666666666667, 3.775)
+start training
+finish training
+lr 0.1;ne 270; md 2('gbrt_model', 2.1536164430702347, 0.30416666666666664, 0.5916666666666667, 3.775)
+start training
+finish training
+lr 0.1;ne 272; md 2('gbrt_model', 2.153545842132899, 0.30416666666666664, 0.5916666666666667, 3.775)
+start training
+finish training
+lr 0.1;ne 274; md 2('gbrt_model', 2.1534914265557186, 0.30416666666666664, 0.5916666666666667, 3.775)
+('gbrt_model', 2.153470319944778, 0.30416666666666664, 0.5916666666666667, 3.775)
+('norm_gbrt_model', 2.153659819604348, 0.30416666666666664, 0.5916666666666667, 3.775)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 250; md 2('gbrt_model', 2.1548548463800494, 0.30625, 0.5895833333333333, 3.775)
+start training
+finish training
+lr 0.1;ne 253; md 2('gbrt_model', 2.1545667153995542, 0.30625, 0.5895833333333333, 3.775)
+start training
+finish training
+lr 0.1;ne 254; md 2('gbrt_model', 2.153885882097714, 0.30625, 0.5895833333333333, 3.775)
+start training
+finish training
+lr 0.1;ne 256; md 2('gbrt_model', 2.1537958582124825, 0.30625, 0.5895833333333333, 3.775)
+start training
+finish training
+lr 0.1;ne 258; md 2('gbrt_model', 2.153788785581907, 0.30625, 0.5895833333333333, 3.7729166666666667)
+start training
+finish training
+lr 0.1;ne 260; md 2('gbrt_model', 2.1536231142949323, 0.30625, 0.5895833333333333, 3.7729166666666667)
+('gbrt_model', 2.1536231142949323, 0.30625, 0.5895833333333333, 3.7729166666666667)
+('norm_gbrt_model', 2.153791981484447, 0.30625, 0.5895833333333333, 3.7729166666666667)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 240; md 2('gbrt_model', 2.154726687622442, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 242; md 2('gbrt_model', 2.154623160141257, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 244; md 2('gbrt_model', 2.1547295329580964, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 246; md 2('gbrt_model', 2.154815807240852, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 248; md 2('gbrt_model', 2.154694181142758, 0.30625, 0.5895833333333333, 3.775)
+start training
+finish training
+lr 0.1;ne 240; md 2('gbrt_model', 2.15469286632382, 0.30833333333333335, 0.5916666666666667, 3.75)
+('gbrt_model', 2.154616324200875, 0.30625, 0.5895833333333333, 3.775)
+('norm_gbrt_model', 2.154785217043304, 0.30625, 0.5895833333333333, 3.775)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+start training
+finish training
+lr 0.1;ne 230; md 2('gbrt_model', 2.156191794538377, 0.30833333333333335, 0.5895833333333333, 3.75)
+start training
+finish training
+lr 0.1;ne 232; md 2('gbrt_model', 2.155217929236149, 0.30833333333333335, 0.5916666666666667, 3.74375)
+start training
+finish training
+lr 0.1;ne 234; md 2('gbrt_model', 2.155134432990302, 0.30833333333333335, 0.5916666666666667, 3.74375)
+start training
+finish training
+lr 0.1;ne 236; md 2('gbrt_model', 2.155130757827755, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 238; md 2('gbrt_model', 2.1550397295448276, 0.30833333333333335, 0.5916666666666667, 3.75)
+start training
+finish training
+lr 0.1;ne 240; md 2('gbrt_model', 2.15469286632382, 0.30833333333333335, 0.5916666666666667, 3.75)
+('gbrt_model', 2.15469286632382, 0.30833333333333335, 0.5916666666666667, 3.75)
+('norm_gbrt_model', 2.154862279176852, 0.30833333333333335, 0.5916666666666667, 3.75)
+Reading dataframe from  ./training.csv
+
+
+Reading dataframe from  ./testing.csv
+
+
+('gbrt_model', 2.153734430371988, 0.3020833333333333, 0.5895833333333333, 3.7916666666666665)
+('norm_gbrt_model', 2.1542012169468996, 0.3020833333333333, 0.5895833333333333, 3.7916666666666665)

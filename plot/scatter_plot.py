@@ -23,12 +23,13 @@ j_winrate = jocks.apply(lambda v: float(len(v[v.finishing_position == "1"]))/len
 j_winrate.name = 'win_rate'
 
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(10, 5))
+plt.subplots_adjust(left=0.1, right=0.8, top=0.9, bottom=0.1)
 ax.scatter(h_winrate,h_numwin,s=10)
 for i in range(len(h_winrate)):
-    if h_numwin.iloc[i] > 4 and h_winrate.iloc[i] > 0.5 :
+    if h_numwin.iloc[i] > 3 and h_winrate.iloc[i] > 0.5 :
         ax.annotate(str(h_numwin.axes[0][i]) ,(h_winrate.iloc[i]+0.01,h_numwin.iloc[i]))
-        #print(h_numwin.axes[0][i])
+        #print(df[df.horse_name == str(h_numwin.axes[0][i])])
 plt.xlabel("Win Rate")
 plt.ylabel("Number of wins")
 plt.title("Winning statistics of horses")
@@ -39,7 +40,7 @@ ax.scatter(j_winrate,j_numwin,s=10)
 for i in range(len(j_winrate)):
     if j_numwin.iloc[i] > 100 and j_winrate.iloc[i] > 0.2 :
         ax.annotate(str(j_numwin.axes[0][i]) ,(j_winrate.iloc[i]+0.005,j_numwin.iloc[i]))
-        #print(j_numwin.axes[0][i])
+        #print(df[df.jockey == str(j_numwin.axes[0][i])])
 plt.xlabel("Win Rate")
 plt.ylabel("Number of wins")
 plt.title("Winning statistics of jockeys")
