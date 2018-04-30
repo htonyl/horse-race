@@ -103,6 +103,6 @@ X_test = X_test.join(trn_ave, on='trainer', rsuffix='')
 X_test.trainer_ave_rank = X_test.trainer_ave_rank.replace(float('nan'), 7)
 
 # Save to csv
-X_train.to_csv('training.csv')
-X_test.to_csv('testing.csv')
+X_train.to_csv('training.csv', index=False)
+X_test.to_csv('testing.csv', index=False)
 print('Saved preprocessed data to training.csv / testing.csv')
