@@ -12,14 +12,51 @@ def extract(df):
 	labels = np.reshape(labels,-1)
 	return features, labels
 
-def default_strat(df, pred_time,pred_rank=None):
-    aggreg  = df.join(pd.DataFrame({'pred_time': pred_time}))
+def combined_strat(df,pred_rank,svr_pred):
+    count = 0
+    cost = 0
+    revenue = 0
+    Profit = 0
+    rej = 0
+    aggreg  = df.join(pd.DataFrame({'pred_time': svr_pred}))
+    aggreg = aggreg.join(pred_rank)
     np.random.seed(0)
+    for name, eachrace in aggreg.groupby('race_id'):
+        eachrace = eachrace.sample(frac=1).reset_index(drop=True)
+        Top1 = eachrace.nsmallest(1,'pred_time')
+        Top1_rank = Top1['finishing_position'].iloc[0]
+        Top1_WO = Top1['win_odds'].iloc[0]
+        Top1_top50 = Top1['HorseRankTop50Percent'].iloc[0]
+        if Top1_top50 != 0:
+            cost += 1
+            if Top1_rank == 1:
+                revenue += Top1_WO
+                count += 1
+        else:
+            rej += 1
+    Profit = revenue - cost
+    print("Cost: "+ str(cost))
+    print("Revenue: "+ str(revenue))
+    print("Profit: "+str(Profit))
+    print("Correct Guess: "+ str(count))
+    print("Reject: "+str(rej))
+    return Profit
+
+def default_strat(df, pred_time,pred_rank=None):
     count = 0
     cost = 0
     revenue = 0
     Profit = 0
     idx=0
+    if pred_rank is not None:
+        aggreg  = df.join(pred_rank)
+        for name, eachrace in aggreg.groupby('race_id'):
+            if idx < 10:
+                print(eachrace[['HorseRankTop50Percent','RaceID','win_odds','finishing_position']])
+                idx += 1
+        return
+    aggreg  = df.join(pd.DataFrame({'pred_time': pred_time}))
+    np.random.seed(0)
     for name, eachrace in aggreg.groupby('race_id'):
         if idx < 10:
             #print(eachrace[['pred_time','win_odds','finishing_position']])
@@ -66,6 +103,37 @@ i use mean and variance of training data to normalize testing data
 norm_train_feats = feat_scaler.fit_transform(train_features)
 norm_test_feats = feat_scaler.transform(test_features)
 
+#getting prediction
+fname = './predictions/lr_predictions.csv'
+print('Reading dataframe from ', fname)
+print('\n')
+lr_pred = pd.read_csv(fname)
+
+
+fname = './predictions/nb_predictions.csv'
+print('Reading dataframe from ', fname)
+print('\n')
+nb_pred = pd.read_csv(fname)
+
+
+fname = './predictions/rf_predictions.csv'
+print('Reading dataframe from ', fname)
+print('\n')
+rf_pred = pd.read_csv(fname)
+
+fname = './predictions/lr_predictions.csv'
+print('Reading dataframe from ', fname)
+print('\n')
+svm_pred = pd.read_csv(fname)
+print("LR Model")
+#default_strat(test_data, None,pred_rank=lr_pred)
+print("NB Model")
+#default_strat(test_data, None,pred_rank=nb_pred)
+print("RF Model")
+#default_strat(test_data, None,pred_rank=rf_pred)
+print("SVM Model")
+#default_strat(test_data, None,pred_rank=svm_pred)
+
 gbrt_pred = gbrt_model.predict(test_features)
 norm_gbrt_pred = norm_gbrt_model.predict(norm_test_feats)
 svr_pred = svr_model.predict(test_features)
@@ -73,13 +141,15 @@ norm_svr_pred = norm_svr_model.predict(norm_test_feats)
 #print(norm_svr_pred)
 
 print("GBRT Model")
-default_strat(test_data, gbrt_pred,pred_rank=None)
+#default_strat(test_data, gbrt_pred,pred_rank=None)
 
 print("Normalized GBRT Model")
-default_strat(test_data, norm_gbrt_pred,pred_rank=None)
+#default_strat(test_data, norm_gbrt_pred,pred_rank=None)
 
 print("SVR Model")
-default_strat(test_data, svr_pred,pred_rank=None)
+#default_strat(test_data, svr_pred,pred_rank=None)
 
 print("Normalized SVR Model")
-default_strat(test_data, norm_svr_pred,pred_rank=None)
+#default_strat(test_data, norm_svr_pred,pred_rank=None)
+
+combined_strat(test_data , lr_pred, norm_svr_pred)
