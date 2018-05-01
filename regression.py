@@ -4,8 +4,9 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler
 import numpy as np
+from sklearn.externals import joblib
 def validate(pred_result , true_labels, df):
-	np.random.seed(1)
+	np.random.seed(0)
 	rmse = np.sqrt(mean_squared_error(pred_result, true_labels))
 	aggreg  = df.join(pd.DataFrame({'pred_time': pred_result}))
 	total = 0
@@ -77,25 +78,26 @@ for c in svr_param_space["C"]:
 with open("./svm4.txt","w") as logf:
 	logf.write("\n".join(log))
 
-"""
+
 svr_model = SVR(cache_size=2000,kernel='linear',C=0.2, epsilon=0.2)
 svr_model.fit(train_features,train_labels)
 svr_pred = svr_model.predict(test_features)
 svr_stat = ("svr_model", ) + validate(svr_pred, true_labels, test_data[['race_id', 'finishing_position']])
 print(svr_stat)
 
-norm_svr_model = SVR(cache_size=2000,kernel='linear',C=0.2, epsilon=0.2)
+norm_svr_model = SVR(cache_size=2000,kernel='linear',C=0.21, epsilon=0.21)
 norm_svr_model.fit(norm_train_feats,norm_train_labels)
 norm_svr_pred = norm_svr_model.predict(norm_test_feats)
 unnorm_svr_pred = label_scaler.inverse_transform(norm_svr_pred)
+#norm_true_labels = label_scaler.transform(true_labels.reshape(-1,1)).reshape(-1)
 norm_svr_stat =("norm_svr_model", ) + validate(unnorm_svr_pred, true_labels, test_data[['race_id', 'finishing_position']])
 print(norm_svr_stat)
 
 
 #4.1.2.
-"""
-gbrt_param_space = {"learning_rate":[0.1],
-				"n_estimators":[230,232,234,236,238,240],
+
+gbrt_param_space = {"learning_rate":[0.05,0.1,0.15,0.2,0.25],
+				"n_estimators":[100,150,200,250,300],
 				"max_depth":[2],
 				"alpha":[0.9,0.2,0.5,1.5]
 				}
@@ -103,26 +105,25 @@ for lr in gbrt_param_space["learning_rate"]:
 	for ne in gbrt_param_space["n_estimators"]:
 		for md in gbrt_param_space["max_depth"]:
 			print("start training")
-			gbrt_model = GradientBoostingRegressor(loss='quantile',verbose=0 ,learning_rate=lr, n_estimators=ne, max_depth=md)
+			gbrt_model = GradientBoostingRegressor(loss='huber',verbose=0 ,learning_rate=lr, n_estimators=ne, max_depth=md)
 			gbrt_model.fit(train_features,train_labels)
 			gbrt_pred = gbrt_model.predict(test_features)
 			print("finish training")
 			gbrt_stat = ("gbrt_model", )+ validate(gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 			print("lr "+str(lr)+";ne "+str(ne)+"; md "+str(md)+str(gbrt_stat))
 #optimal seems: lr:0.1, ne:300, md:2
-
-gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=300, max_depth=2)
+"""
+gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=242, max_depth=2)
 gbrt_model.fit(train_features,train_labels)
 gbrt_pred = gbrt_model.predict(test_features)
 gbrt_stat = ("gbrt_model", )+ validate(gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 print(gbrt_stat)
 #print(gbrt_pred)
-
-norm_gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=300, max_depth=2)
+joblib.dump(gbrt_model, './model/GBRT.pkl') 
+norm_gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=242, max_depth=2)
 norm_gbrt_model.fit(norm_train_feats,norm_train_labels)
 norm_gbrt_pred = norm_gbrt_model.predict(norm_test_feats)
 unnorm_gbrt_pred = label_scaler.inverse_transform(norm_gbrt_pred)
 norm_gbrt_stat = ("norm_gbrt_model", )+ validate(unnorm_gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 print(norm_gbrt_stat)
 #print(unnorm_gbrt_pred)
-"""
