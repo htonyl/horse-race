@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import time
 
+from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB, BernoulliNB
 from sklearn.svm import SVC
@@ -87,54 +88,76 @@ def get_metrics(y, pred):
 
 def fit_predict(model, X_cols=X_train_.columns):
     print('\nEvaluation: {}\n\taccuracy\tprecision\trecall\tf1\tfit\tscore\ttotal (s)'.format(model))
-    for c in y_metrics:
+    # Validation split
+    X_t, X_v, y_t, y_v = train_test_split(X_train_, y_train, test_size=0.3, **kwargs)
+    pred_save = np.empty((len(X_test_), 3))
+    for idx, c in enumerate(y_metrics):
         _t = time.time()
-        model.fit(X_train_[X_cols], y_train[c])
+        model.fit(X_t[X_cols], y_t[c])
         fit_t = time.time() - _t
         
+        # Validation
+        _t = time.time()
+        pred = model.predict(X_v[X_cols])
+        pred_t = time.time() - _t
+
+        acc, rec, prec, f1 = get_metrics(y_v[c], pred)
+        print("{}_V:\t{:.9}%\t{:.6f}\t{:.5f}\t{:.5f}\t{:.4f}\t{:.4f}\t{:.4f}".format(c, acc*100, prec, rec, f1, fit_t, pred_t, fit_t+pred_t))
+
+        # Test
         _t = time.time()
         pred = model.predict(X_test_[X_cols])
         pred_t = time.time() - _t
 
         acc, rec, prec, f1 = get_metrics(y_test[c], pred)
-        print("{}:\t{:.9}%\t{:.6f}\t{:.5f}\t{:.5f}\t{:.4f}\t{:.4f}\t{:.4f}".format(c, acc*100, prec, rec, f1, fit_t, pred_t, fit_t+pred_t))
-    pred = []
-    return model, pred
+        pred_save[:, idx] = pred
+        print("{}_T:\t{:.9}%\t{:.6f}\t{:.5f}\t{:.5f}\t{:.4f}\t{:.4f}\t{:.4f}".format(c, acc*100, prec, rec, f1, fit_t, pred_t, fit_t+pred_t))
+    return model, pred_save
+
+def save_csv(fname, X, y):
+    df_pred = pd.DataFrame(y, dtype='int8', columns=['top1', 'top3', 'toph'])
+    df_all = pd.concat((X, df_pred), axis=1).filter(items=['race_id', 'horse_id', 'top1', 'top3', 'toph'])
+    print('Saving {} predictions to {}....'.format(len(y), fname))
+    df_all.columns = ['RaceID', 'HorseID', 'HorseWin', 'HorseRankTop3', 'HorseRankTop50Percent']
+    df_all.to_csv(fname, index=False)
+    return df_all
 
 kwargs = { 'random_state': 61052 }
+pred = {}
+
+### 3.1 - 3.4 Fit/ Predict / Save / Evaluate
 
 ## 3.1.1 Logistic Regression
 print('## Logistic Regrssion ##')
 
 model = LogisticRegression(**kwargs)
-lr_model, pred = fit_predict(model)
+lr_model, pred['lr'] = fit_predict(model)
+save_csv('predictions/lr_predictions.csv', X_test, pred['lr'])
 print('\n')
 
 ## 3.1.2 Naive Bayes
 print('## Naive Bayes ##')
 
-model = GaussianNB(**kwargs)
-nb_model, pred = fit_predict(model)
+model = BernoulliNB()
+nb_model, pred['bnb'] = fit_predict(model)
 
-model = BernoulliNB(**kwargs)
-nb_model, pred = fit_predict(model)
+model = GaussianNB()
+nb_model, pred['gnb'] = fit_predict(model)
+save_csv('predictions/nb_predictions.csv', X_test, pred['gnb'])
 print('\n')
 
 ## 3.1.3 Support Vector Machine
 print('## Support Vector Machine ##')
 
-model = SVC(kernel='sigmoid', **kwargs)
-svm_model, pred = fit_predict(model)
+model = SVC(kernel='rbf', **kwargs)
+svm_model, pred['svm_sig'] = fit_predict(model)
+save_csv('predictions/svm_predictions.csv', X_test, pred['svm_sig'])
 print('\n')
 
 ## 3.1.4 Random Forest
 print('## Random Forest ##')
 
 model = RandomForestClassifier(**kwargs)
-rf_model, pred = fit_predict(model)
+rf_model, pred['rf'] = fit_predict(model)
+save_csv('predictions/rf_predictions.csv', X_test, pred['rf'])
 print('\n')
-
-## 3.2 Save predictions
-## 3.3 Evaluate predictions
-## 3.4 Report
-
