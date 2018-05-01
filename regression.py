@@ -57,14 +57,14 @@ norm_test_feats = feat_scaler.transform(test_features)
 
 norm_train_labels = label_scaler.fit_transform(train_labels.reshape(-1,1)).reshape(-1)
 
-"""
+
 #4.1.1.
 #epsilon=0.2
 svr_param_space = {"C":[0.1,0.2,0.5,1,2,4],
 		"epsilon":[0.05,0.15, 0.2, 0.25,0.3]
 			}
 log = []
-for c in svr_param_space["C"]:
+for c in svr_param_space["C"]:  #comment out the for loop if parameters tuning is not required
 	for eps in svr_param_space["epsilon"]:
 		print("\n")
 		norm_svr_model = SVR(cache_size=6000,kernel='linear',C=c, epsilon=eps)
@@ -77,7 +77,7 @@ for c in svr_param_space["C"]:
 		log.append(mess)
 with open("./svm4.txt","w") as logf:
 	logf.write("\n".join(log))
-"""
+
 
 svr_model = SVR(cache_size=2000,kernel='linear',C=0.2, epsilon=0.2)
 svr_model.fit(train_features,train_labels)
@@ -99,7 +99,7 @@ gbrt_param_space = {"learning_rate":[0.05,0.1,0.15,0.2,0.25],
 				"max_depth":[2],
 				"alpha":[0.9,0.2,0.5,1.5]
 				}
-for lr in gbrt_param_space["learning_rate"]:
+for lr in gbrt_param_space["learning_rate"]: #comment out the for loop if parameters tuning is not required
 	for ne in gbrt_param_space["n_estimators"]:
 		for md in gbrt_param_space["max_depth"]:
 			print("start training")

@@ -59,6 +59,10 @@ norm_svr_model = joblib.load('./model/norm_SVR.pkl')
 svr_model = joblib.load('./model/SVR.pkl')
 
 feat_scaler = StandardScaler()
+'''
+because normalized model trained with normalized training data
+i use mean and variance of training data to normalize testing data
+'''
 norm_train_feats = feat_scaler.fit_transform(train_features)
 norm_test_feats = feat_scaler.transform(test_features)
 
