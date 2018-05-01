@@ -2,19 +2,16 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-fname = '../data/race-result-horse.csv'
+fname = '../training.csv'
 print('Reading dataframe from ', fname)
 print('\n')
-
 df = pd.read_csv(fname)
-cond = np.where([not (type(s) == type('') and s.isdigit()) for s in df['finishing_position']])
-df = df.drop(cond[0], axis=0)
 labels = []
 values = []
 #colours
-wins = df[df.finishing_position == str(1)]
+wins = df[df.finishing_position == 1]
 for i in range(df['draw'].astype('int').min(),df['draw'].astype('int').max()):
-    values.append(len(wins[wins.draw == str(i)]))
+    values.append(len(wins[wins.draw == i]))
     labels.append(str(i))
 
 

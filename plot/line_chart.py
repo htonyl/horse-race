@@ -2,13 +2,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 
-fname = '../data/race-result-horse.csv'
+fname = '../training.csv'
 print('Reading dataframe from ', fname)
 print('\n')
-
 df = pd.read_csv(fname)
-cond = np.where([not (type(s) == type('') and s.isdigit()) for s in df['finishing_position']])
-df = df.drop(cond[0], axis=0)
 
 while True:
     horseid = input("Enter horse id: ")
