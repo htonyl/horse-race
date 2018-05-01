@@ -15,8 +15,8 @@ def validate(pred_result , true_labels, df):
 	ave_rank = 0
 	for name, eachrace in aggreg.groupby('race_id'):
 		total += 1
-		eachrace = eachrace.sample(frac=1).reset_index(drop=True)
-		Top1_Rank = eachrace.nsmallest(1,'pred_time')['finishing_position'].iloc[0]
+		eachrace = eachrace.sample(frac=1).reset_index(drop=True) #avoid picking the first one if there is duplicated minimum time
+		Top1_Rank = eachrace.nsmallest(1,'pred_time')['finishing_position'].iloc[0] #choose the smallest prediction time
 		if Top1_Rank == 1:
 			top_1 += 1
 		if Top1_Rank <= 3:
@@ -77,25 +77,23 @@ for c in svr_param_space["C"]:
 		log.append(mess)
 with open("./svm4.txt","w") as logf:
 	logf.write("\n".join(log))
-
+"""
 
 svr_model = SVR(cache_size=2000,kernel='linear',C=0.2, epsilon=0.2)
 svr_model.fit(train_features,train_labels)
 svr_pred = svr_model.predict(test_features)
 svr_stat = ("svr_model", ) + validate(svr_pred, true_labels, test_data[['race_id', 'finishing_position']])
 print(svr_stat)
+joblib.dump(svr_model, './model/SVR.pkl')
 
-norm_svr_model = SVR(cache_size=2000,kernel='linear',C=0.21, epsilon=0.21)
+norm_svr_model = SVR(cache_size=2000,kernel='linear',C=0.2, epsilon=0.2)
 norm_svr_model.fit(norm_train_feats,norm_train_labels)
 norm_svr_pred = norm_svr_model.predict(norm_test_feats)
 unnorm_svr_pred = label_scaler.inverse_transform(norm_svr_pred)
-#norm_true_labels = label_scaler.transform(true_labels.reshape(-1,1)).reshape(-1)
 norm_svr_stat =("norm_svr_model", ) + validate(unnorm_svr_pred, true_labels, test_data[['race_id', 'finishing_position']])
 print(norm_svr_stat)
-
-
+#joblib.dump(norm_svr_model, './model/norm_SVR.pkl')
 #4.1.2.
-
 gbrt_param_space = {"learning_rate":[0.05,0.1,0.15,0.2,0.25],
 				"n_estimators":[100,150,200,250,300],
 				"max_depth":[2],
@@ -112,18 +110,19 @@ for lr in gbrt_param_space["learning_rate"]:
 			gbrt_stat = ("gbrt_model", )+ validate(gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 			print("lr "+str(lr)+";ne "+str(ne)+"; md "+str(md)+str(gbrt_stat))
 #optimal seems: lr:0.1, ne:300, md:2
-"""
+
 gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=242, max_depth=2)
 gbrt_model.fit(train_features,train_labels)
 gbrt_pred = gbrt_model.predict(test_features)
 gbrt_stat = ("gbrt_model", )+ validate(gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 print(gbrt_stat)
 #print(gbrt_pred)
-joblib.dump(gbrt_model, './model/GBRT.pkl') 
+#joblib.dump(gbrt_model, './model/GBRT.pkl')
 norm_gbrt_model = GradientBoostingRegressor(loss='quantile',learning_rate=0.1, n_estimators=242, max_depth=2)
 norm_gbrt_model.fit(norm_train_feats,norm_train_labels)
 norm_gbrt_pred = norm_gbrt_model.predict(norm_test_feats)
 unnorm_gbrt_pred = label_scaler.inverse_transform(norm_gbrt_pred)
 norm_gbrt_stat = ("norm_gbrt_model", )+ validate(unnorm_gbrt_pred, true_labels, test_data[['race_id','finishing_position']])
 print(norm_gbrt_stat)
+#joblib.dump(norm_gbrt_model, './model/norm_GBRT.pkl')
 #print(unnorm_gbrt_pred)

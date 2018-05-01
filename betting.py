@@ -1,6 +1,7 @@
 from sklearn.externals import joblib
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 
 def extract(df):
 	features = df.as_matrix(columns=['actual_weight', 'declared_horse_weight', 'draw','win_odds', 'jockey_ave_rank', 'trainer_ave_rank', 'recent_ave_rank', 'race_distance'])
@@ -12,17 +13,23 @@ def extract(df):
 	return features, labels
 
 def default_strat(df, pred_time,pred_rank=None):
-    aggreg  = test_data.join(pd.DataFrame({'pred_time': pred_time}))
+    aggreg  = df.join(pd.DataFrame({'pred_time': pred_time}))
     np.random.seed(0)
     cost = 0
     revenue = 0
+    Profit = 0
+    idx=0
     for name, eachrace in aggreg.groupby('race_id'):
+        if idx < 10:
+            #print(eachrace[['pred_time','win_odds','finishing_position']])
+            idx += 1
         cost += 1
-        eachrace = eachrace.sample(frac=1).reset_index(drop=True)
-        Top1 = eachrace.nsmallest(1,'pred_time')
+        eachrace = eachrace.sample(frac=1).reset_index(drop=True) #avoid picking the first one if there is duplicated minimum time
+        Top1 = eachrace.nsmallest(1,'pred_time') #choose the smallest prediction time
         Top1_rank = Top1['finishing_position'].iloc[0]
         Top1_WO = Top1['win_odds'].iloc[0]
         if int(Top1_rank) == 1:
+            #print(revenue)
             revenue += Top1_WO
     Profit = revenue - cost
     print("Cost: "+ str(cost))
@@ -30,13 +37,42 @@ def default_strat(df, pred_time,pred_rank=None):
     print("Profit: "+str(Profit))
     return Profit
 
+fname = './training.csv'
+print('Reading dataframe from ', fname)
+print('\n')
+train_data = pd.read_csv(fname)
 fname = './testing.csv'
 print('Reading dataframe from ', fname)
 print('\n')
 test_data = pd.read_csv(fname)
 
-gbrt_model = joblib.load('./model/GBRT.pkl')
-test_features , true_labels = extract(test_data)
-gbrt_pred = gbrt_model.predict(test_features)
 
+
+train_features , train_labels = extract(train_data)
+test_features , true_labels = extract(test_data)
+norm_gbrt_model = joblib.load('./model/norm_GBRT.pkl')
+gbrt_model = joblib.load('./model/GBRT.pkl')
+norm_svr_model = joblib.load('./model/norm_SVR.pkl')
+svr_model = joblib.load('./model/SVR.pkl')
+
+feat_scaler = StandardScaler()
+norm_train_feats = feat_scaler.fit_transform(train_features)
+norm_test_feats = feat_scaler.transform(test_features)
+
+gbrt_pred = gbrt_model.predict(test_features)
+norm_gbrt_pred = norm_gbrt_model.predict(norm_test_feats)
+svr_pred = svr_model.predict(test_features)
+norm_svr_pred = norm_svr_model.predict(norm_test_feats)
+#print(norm_svr_pred)
+
+print("GBRT Model")
 default_strat(test_data, gbrt_pred,pred_rank=None)
+
+print("Normalized GBRT Model")
+default_strat(test_data, norm_gbrt_pred,pred_rank=None)
+
+print("SVR Model")
+default_strat(test_data, svr_pred,pred_rank=None)
+
+print("Normalized SVR Model")
+default_strat(test_data, norm_svr_pred,pred_rank=None)
