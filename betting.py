@@ -15,6 +15,7 @@ def extract(df):
 def default_strat(df, pred_time,pred_rank=None):
     aggreg  = df.join(pd.DataFrame({'pred_time': pred_time}))
     np.random.seed(0)
+    count = 0
     cost = 0
     revenue = 0
     Profit = 0
@@ -31,10 +32,12 @@ def default_strat(df, pred_time,pred_rank=None):
         if int(Top1_rank) == 1:
             #print(revenue)
             revenue += Top1_WO
+            count += 1
     Profit = revenue - cost
     print("Cost: "+ str(cost))
     print("Revenue: "+ str(revenue))
     print("Profit: "+str(Profit))
+    print("Correct Guess: "+ str(count))
     return Profit
 
 fname = './training.csv'
